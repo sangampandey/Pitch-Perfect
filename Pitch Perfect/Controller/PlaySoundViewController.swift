@@ -61,12 +61,19 @@ class PlaySoundViewController: UIViewController,AVAudioPlayerDelegate {
     */
     
     func playAudioWithVariableRate(rate:Float){
+        stopAll()
+        audioPlayer.rate = rate
+        audioPlayer.play()
+    }
+    
+    /**
+        this function stops the audio player and audio engine
+    */
+    func stopAll(){
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
-        audioPlayer.currentTime=0.0
-        audioPlayer.rate = rate
-        audioPlayer.play()
+        audioPlayer.currentTime = 0.0
     }
     
     /**
@@ -74,9 +81,8 @@ class PlaySoundViewController: UIViewController,AVAudioPlayerDelegate {
         @params : pitch -2000 to 2000
     */
     func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        
+        stopAll()
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)

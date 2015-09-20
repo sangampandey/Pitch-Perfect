@@ -36,7 +36,7 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         recordingInProgress.hidden = false
         stopButton.hidden = false
         recordButton.enabled = false
-        recordLabel.hidden = true
+        recordLabel.text = "Recording..."
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
@@ -86,7 +86,7 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         recordingInProgress.hidden = true
         stopButton.hidden = true
         recordButton.enabled = true
-        recordLabel.hidden = false
+        recordLabel.text = "Tap to Record"
         
         audioRecorder.stop()
         var audioSession = AVAudioSession.sharedInstance()
